@@ -29,7 +29,7 @@
                                 @Html.ActionLink("用户", "User", "Home", new { area = "" }, new { id = "NavbarUser", @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                            <form class="form-inline my-2 my-md-0">
+                            <form class="form-inline my-2 my-md-0" method="post" action="~/Home/Index">
                                 <input class="form-control" type="text" placeholder="搜索" aria-label="搜索">
                                 <button type="submit" class="btn btn-secondary">搜索</button>
                             </form>
@@ -39,21 +39,21 @@
                     <div class="nav-item btn-lg dropdown navbar-brand">
                         <a class="dropdown-toggle" id="UserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">登录</a>
                         <div class="dropdown-menu" aria-labelledby="UserDropdown">
-                            <a class="dropdown-item" href="#">资料</a>
-                            <a class="dropdown-item" href="#">登录/注销</a>
+                            @Html.ActionLink("资料", "Contact", "Home", new { area = "" }, new { id = "UserInfo", @class = "dropdown-item" })
+                            @Html.ActionLink("登录", "Login", "Account", new { area = "" }, new { id = "UserInfo", @class = "dropdown-item" })
                         </div>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
-
+    
     <div class="container body-content">
         @RenderBody()
         <hr />
 
         <footer>
-            <nav class="navbar text-center">
+            <nav class="navbar text-center fixed-bottom">
                 &copy; Leon Note @DateTime.Now.Year
             </nav>
         </footer>
