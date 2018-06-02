@@ -8,47 +8,46 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body class="container">
+<body style="padding:0px">
     <header>
-        <nav class="navbar">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <div class="navbar-brand">Leon Note</div>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul>
-                        <li>
-                            <a href="#">User Name</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                @Html.ActionLink("Leon Note", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#MainNavbar" aria-controls="MainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="MainNavbar">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                                @Html.ActionLink("发布", "Publish", "Home",new { area=""}, new {id="NavbarPublish", @class= "nav-link" })
                         </li>
-                        <li>
-                            <a href="">Login | Logoff</a>
+                        <li class="nav-item">
+                                @Html.ActionLink("笔记", "Notes", "Home", new { area = "" }, new {id="NavbarNote", @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                                @Html.ActionLink("用户", "User", "Home", new { area = "" }, new { id = "NavbarUser", @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            <form class="form-inline my-2 my-md-0">
+                                <input class="form-control" type="text" placeholder="搜索" aria-label="搜索">
+                                <button type="submit" class="btn btn-secondary">搜索</button>
+                            </form>
                         </li>
                     </ul>
+
+                    <div class="nav-item btn-lg dropdown navbar-brand">
+                        <a class="dropdown-toggle" id="UserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">登录</a>
+                        <div class="dropdown-menu" aria-labelledby="UserDropdown">
+                            <a class="dropdown-item" href="#">资料</a>
+                            <a class="dropdown-item" href="#">登录/注销</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
-    <!--
-    <div class="nav navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <div class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </div>
-                @Html.ActionLink("Leon Note", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("发布", "Index", "Home")</li>
-                    <li>@Html.ActionLink("笔记", "About", "Home")</li>
-                    <li>@Html.ActionLink("用户", "Contact", "Home")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    -->
+
     <div class="container body-content">
         @RenderBody()
         <hr />
