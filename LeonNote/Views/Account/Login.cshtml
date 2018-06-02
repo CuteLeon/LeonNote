@@ -18,16 +18,14 @@
         </div>
         <div class="btn-group float-right">
             <button type="submit" class="btn btn-primary" id="LoginButton">登录</button>
-            <button type="button" class="btn btn-secondary" id="RegisterButton" onclick="/Account/Register">注册</button>
+            <button type="button" class="btn btn-secondary" onclick="GotoRegister();" id="RegisterButton">注册</button>
         </div>
         <div class="clearfix"></div>
     </div>
 }
 
-<script>
-    $(function () {
-        $("#RegisterButton").click(function () {
-            location.href = "@Url.Content("~/Account/Register")";
-        })
-    });
+<script type="text/javascript">
+    function GotoRegister() {
+        location.href = "@Url.Content("~/Account/Register")";
+    }
 </script>
