@@ -1,31 +1,48 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@model List<Note>
+    @{
+        ViewBag.Title = "欢迎访问，Leon Note";
+    }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+    <div class="jumbotron">
+        <h1>Leon Note</h1>
+        <p class="lead">欢迎访问我的第一个 ASP.NET MVC 程序~</p>
+        <p><a href="https://github.com/CuteLeon/LeonNote" class="btn btn-primary btn-lg">此程序 Github 仓库 &raquo;</a></p>
+    </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <hr />
+
+    <div class="container">
+        <h4>@((Session["User"] as User)?.UserName)  的笔记：</h4>
+        <table class="table table-bordered table-hover table-light table-striped">
+            <thead>
+                <tr>
+                    <th>笔记编号</th>
+                    <th>标题</th>
+                    <th>内容</th>
+                    <th>发布时间</th>
+                    <th>发布者</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var note in Model.Select(note => new
+                    {
+                        笔记编号 = note.Id,
+                        标题 = note.Title,
+                        内容 = note.Content,
+                        发布时间 = note.PublishTime,
+                        发布者 = note.User.UserName
+                    }).ToList())
+                    {
+                <tr>
+                    <td>@note.笔记编号</td>
+                    <td>@note.标题</td>
+                    <td>@note.内容</td>
+                    <td>@note.发布时间</td>
+                    <td>@note.发布者</td>
+                </tr>
+                    }
+                }
+            </tbody>
+        </table> 
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
