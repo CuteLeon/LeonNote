@@ -14,9 +14,9 @@ namespace LeonNote.Controllers
         public ActionResult Index()
         {
             //TODO: 自动登录调试代码；
-            Session["User"] = noteDB.UserBase.First(u => u.UserName == "Mathilda");
+            //Session["User"] = noteDB.UserBase.First(u => u.UserName == "Mathilda");
 
-            if (Session["User"] == null) return View();
+            if (Session["User"] == null) return View(new List<Note>());
             int UserID = (Session["User"] as User).Id;
             var notes = noteDB.NoteBase
                 .Where(note => note.UserID == UserID)
@@ -37,5 +37,11 @@ namespace LeonNote.Controllers
 
             return View();
         }
+
+        public ActionResult Remove(int id)
+        {
+            return View("Index");
+        }
+
     }
 }

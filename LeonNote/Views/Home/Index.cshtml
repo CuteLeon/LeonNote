@@ -10,39 +10,55 @@
     </div>
 
     <hr />
-
-    <div class="container">
-        <h4>@((Session["User"] as User)?.UserName)  的笔记：</h4>
-        <table class="table table-bordered table-hover table-light table-striped">
-            <thead>
-                <tr>
-                    <th>笔记编号</th>
-                    <th>标题</th>
-                    <th>内容</th>
-                    <th>发布时间</th>
-                    <th>发布者</th>
-                </tr>
-            </thead>
-            <tbody>
-                @{
-                    foreach (var note in Model.Select(note => new
-                    {
-                        笔记编号 = note.Id,
-                        标题 = note.Title,
-                        内容 = note.Content,
-                        发布时间 = note.PublishTime,
-                        发布者 = note.User.UserName
-                    }).ToList())
-                    {
-                <tr>
-                    <td>@Html.DisplayFor(n=>note.笔记编号)</td>
-                    <td>@note.标题</td>
-                    <td>@note.内容</td>
-                    <td>@note.发布时间</td>
-                    <td>@note.发布者</td>
-                </tr>
-                    }
+@{
+    User user = Session["User"] as User;
+    if (user != null)
+    {
+        <div class="container">
+            <h5>@user.UserName  的笔记：</h5>
+            @{
+                if (Model != null && Model.Count > 0)
+                {
+                    <h5 class="text-center">没有发表过笔记 ...</h5>
                 }
-            </tbody>
-        </table> 
-    </div>
+                else
+                {
+                    <table class="table table-bordered table-hover table-light table-striped">
+                        <thead>
+                            <tr>
+                                <th>笔记编号</th>
+                                <th>标题</th>
+                                <th>内容</th>
+                                <th>发布时间</th>
+                                <th>发布者</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var note in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(n => note.Id)</td>
+                                    <td>@note.Title</td>
+                                    <td>@note.Content</td>
+                                    <td>@note.PublishTime</td>
+                                    <td>@note.User.UserName</td>
+                                    <td>
+                                        <!--
+                                        <a href="@Url.Content(string.Format(@"~/Home/Remove/?id={0}&username={1}", note.Id, note.User.UserName))">删除</a>
+                                        -->
+                                        <a href="@Url.Content("~/Home/Remove/" + @note.Id)">删除</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table> 
+                }
+            }
+        </div>
+    }
+    else
+    {
+        <h5 class="text-center">还没有登录，请先登录</h5>
+    }
+}
