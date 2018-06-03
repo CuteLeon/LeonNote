@@ -25,7 +25,7 @@ namespace LeonNote.Models
             context.UserBase.Add(
                 new User()
                 {
-                    UserName = "Mathild",
+                    UserName = "Mathilda",
                     Password = "IamMathilda",
                     Notes = new List<Note>
                     {
