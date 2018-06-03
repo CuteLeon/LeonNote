@@ -18,7 +18,7 @@ namespace LeonNote
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            Database.SetInitializer(new Models.SampleData());
+            //Database.SetInitializer(new Models.SampleData());
         }
     }
 }

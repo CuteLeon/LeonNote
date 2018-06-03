@@ -32,8 +32,25 @@ namespace LeonNote.Controllers
             }
             else
             {
-                ModelState.AddModelError("","登录错误");
+                ModelState.AddModelError("","用户名或密码错误。");
                 return View(user);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Register(User user)
+        {
+            var item = noteDB.UserBase.FirstOrDefault<User>(m => m.UserName == user.UserName);
+            if (item != null)
+            {
+                ModelState.AddModelError("","用户名已经存在，无法注册。");
+                return View(user);
+            }
+            else
+            {
+                noteDB.UserBase.Add(user);
+                noteDB.SaveChanges();
+                return RedirectToAction("Login", "Account");
             }
         }
 
