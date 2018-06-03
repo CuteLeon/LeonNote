@@ -17,7 +17,7 @@
         <div class="container">
             <h5>@user.UserName  的笔记：</h5>
             @{
-                if (Model != null && Model.Count > 0)
+                if (Model == null || Model.Count == 0)
                 {
                     <h5 class="text-center">没有发表过笔记 ...</h5>
                 }
@@ -59,6 +59,6 @@
     }
     else
     {
-        <h5 class="text-center">还没有登录，请先登录</h5>
+        <h5 class="text-center">还没有登录，请先 <a href="@Url.Content("~/Account/Login/")">登录</a></h5>
     }
 }
