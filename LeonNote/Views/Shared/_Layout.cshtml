@@ -20,10 +20,10 @@
                 <div class="collapse navbar-collapse" id="MainNavbar">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                                @Html.ActionLink("发布", "Publish", "Home",new { area=""}, new {id="NavbarPublish", @class= "nav-link" })
+                                @Html.ActionLink("发布", "Publish", "Home", new { area = "" }, new { id = "NavbarPublish", @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                                @Html.ActionLink("笔记", "Notes", "Home", new { area = "" }, new {id="NavbarNote", @class = "nav-link" })
+                                @Html.ActionLink("笔记", "Notes", "Home", new { area = "" }, new { id = "NavbarNote", @class = "nav-link" })
                         </li>
                         <li class="nav-item">
                                 @Html.ActionLink("用户", "User", "Home", new { area = "" }, new { id = "NavbarUser", @class = "nav-link" })
@@ -37,11 +37,24 @@
                     </ul>
 
                     <div class="nav-item btn-lg dropdown navbar-brand">
-                        <a class="dropdown-toggle" id="UserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">登录</a>
-                        <div class="dropdown-menu" aria-labelledby="UserDropdown">
-                            @Html.ActionLink("资料", "Contact", "Home", new { area = "" }, new { id = "UserInfo", @class = "dropdown-item" })
-                            @Html.ActionLink("登录", "Login", "Account", new { area = "" }, new { id = "UserInfo", @class = "dropdown-item" })
-                        </div>
+                        @{
+                            var User = (Session["User"] as User) ?? null;
+                            if (User == null)
+                            {
+                                @Html.ActionLink("登录", "Login", "Account", new { area = "" }, new { id = "Loginn", @class = "btn btn-primary" })
+                            }
+                            else
+                            {
+                                <a class="dropdown-toggle" id="UserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @User.UserName
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="UserDropdown">
+                                    @Html.ActionLink("资料", "Contact", "Home", new { area = "" }, new { id = "UserInfo", @class = "dropdown-item" })
+                                    @Html.ActionLink("注销", "Logoff", "Account", new { area = "" }, new { id = "Logoff", @class = "dropdown-item" })
+                                </div>
+                            }
+                        }
+
                     </div>
                 </div>
             </div>
