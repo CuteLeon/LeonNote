@@ -24,10 +24,10 @@ namespace LeonNote.Controllers
         [HttpPost]
         public ActionResult Login(User user)
         {
-            var item = noteDB.UserBase.FirstOrDefault<User>(m => m.UserName == user.UserName && m.Password == user.Password);
-            if (item != null)
+            var ExistedUser = noteDB.UserBase.FirstOrDefault<User>(m => m.UserName == user.UserName && m.Password == user.Password);
+            if (ExistedUser != null)
             {
-                Session["User"] = user;
+                Session["User"] = ExistedUser;// 这里不要直接取 user,窦泽取不到 User.Id
                 return RedirectToAction("Index", "Home");
             }
             else
