@@ -1,0 +1,30 @@
+﻿@model Note
+@{
+    ViewBag.Title = "查看笔记";
+}
+
+<table calss="table table-borderless">
+    <tr>
+        <td class="text-right">笔记编号：</td>
+        <td><strong>@Model.Id</strong></td>
+    </tr>
+    <tr>
+        <td class="text-right">发布者：</td>
+        <td><strong>@Model.User.UserName</strong></td>
+    </tr>
+    <tr>
+        <td class="text-right">发布时间：</td>
+        <td><strong>@Model.PublishTime</strong></td>
+    </tr>
+    <tr>
+        <td class="text-right">标题：</td>
+        <td><strong>@Model.Title</strong></td>
+    </tr>
+    <tr>
+        <td class="text-right">内容：</td>
+        <td><strong>@Model.Content</strong></td>
+    </tr>
+</table>
+
+<hr />
+<a href="@Url.Content(string.Format("~/Note/Edit/?id={0}",@Model.Id))" class="btn btn-primary">编辑</a>

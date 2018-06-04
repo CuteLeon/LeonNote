@@ -20,7 +20,7 @@
                 <div class="collapse navbar-collapse" id="MainNavbar">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            @Html.ActionLink("发表", "Publish", "Home", new { area = "" }, new { id = "NavbarPublish", @class = "nav-link" })
+                            @Html.ActionLink("发表", "Publish", "Note", new { area = "" }, new { id = "NavbarPublish", @class = "nav-link" })
                         </li>
                         <li class="nav-item">
                             @Html.ActionLink("笔记", "Notes", "Home", new { area = "" }, new { id = "NavbarNote", @class = "nav-link" })
@@ -61,9 +61,11 @@
         </nav>
     </header>
     
-    <h5 class="card-header">@ViewBag.Title</h5>
 
     <div class="container body-content">
+        <h5 class="text-primary">@ViewBag.Title</h5>
+        <hr />
+
         @RenderBody()
         <hr />
 

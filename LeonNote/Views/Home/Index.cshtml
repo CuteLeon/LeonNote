@@ -26,7 +26,7 @@
                     <table class="table table-bordered table-hover table-light table-striped">
                         <tr>
                             <td colspan="6">
-                                @Html.ActionLink("发表", "Publish", "Home", new { area = "" }, new { id = "Publish", @class = "btn btn-primary"})
+                                @Html.ActionLink("发表", "Publish", "Note", new { area = "" }, new { id = "Publish", @class = "btn btn-primary"})
                             </td>
                         </tr>
                         <thead>
@@ -49,9 +49,9 @@
                                     <td>@note.PublishTime</td>
                                     <td>@note.User.UserName</td>
                                     <td style="padding:0.5rem">
-                                        <a href="@Url.Content(string.Format(@"~/Home/Detail/?id={0}", note.Id))" class="btn btn-primary btn-sm" style="margin-top:0px;margin-bottom:0px">查看</a>
-                                        <a href="@Url.Content(string.Format(@"~/Home/Edit/?id={0}", note.Id))" class="btn btn-info btn-sm" style="margin-top:0px;margin-bottom:0px">编辑</a>
-                                        <a href="@Url.Content(string.Format(@"~/Home/Remove/?id={0}", note.Id))" class="btn btn-danger btn-sm" style="margin-top:0px;margin-bottom:0px">删除</a>
+                                        <a href="@Url.Content(string.Format(@"~/Note/Detail/?id={0}", note.Id))" class="btn btn-primary btn-sm" style="margin-top:0px;margin-bottom:0px">查看</a>
+                                        <a href="@Url.Content(string.Format(@"~/Note/Edit/?id={0}", note.Id))" class="btn btn-info btn-sm" style="margin-top:0px;margin-bottom:0px">编辑</a>
+                                        <a href="@Url.Content(string.Format(@"~/Note/Remove/?id={0}", note.Id))" class="btn btn-danger btn-sm" style="margin-top:0px;margin-bottom:0px">删除</a>
                                     </td>
                                 </tr>
                             }
