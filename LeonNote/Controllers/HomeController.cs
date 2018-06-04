@@ -14,7 +14,7 @@ namespace LeonNote.Controllers
         public ActionResult Index()
         {
             //TODO: 自动登录调试代码；
-            Session["User"] = noteDB.UserBase.First(u => u.UserName == "Leon");
+            //Session["User"] = noteDB.UserBase.First(u => u.UserName == "Leon");
 
             if (Session["User"] == null) return View(new List<Note>());
             int UserID = (Session["User"] as User).Id;
@@ -26,14 +26,14 @@ namespace LeonNote.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "欢迎访问我第一个 ASP.NET MVC 程序";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Leon.ID@QQ.COM";
 
             return View();
         }
