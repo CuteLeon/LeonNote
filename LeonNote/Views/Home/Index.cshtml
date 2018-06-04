@@ -44,10 +44,7 @@
                                     <td>@note.PublishTime</td>
                                     <td>@note.User.UserName</td>
                                     <td>
-                                        <!--
-                                        <a href="@Url.Content(string.Format(@"~/Home/Remove/?id={0}&username={1}", note.Id, note.User.UserName))">删除</a>
-                                        -->
-                                        <a href="@Url.Content("~/Home/Remove/" + @note.Id)">删除</a>
+                                        <a href="@Url.Content(string.Format(@"~/Home/Remove/?id={0}&userid={1}", note.Id, note.User.Id))">删除</a>
                                     </td>
                                 </tr>
                             }

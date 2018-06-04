@@ -14,7 +14,7 @@ namespace LeonNote.Controllers
         public ActionResult Index()
         {
             //TODO: 自动登录调试代码；
-            //Session["User"] = noteDB.UserBase.First(u => u.UserName == "Mathilda");
+            //Session["User"] = noteDB.UserBase.First(u => u.UserName == "Leon");
 
             if (Session["User"] == null) return View(new List<Note>());
             int UserID = (Session["User"] as User).Id;
@@ -38,9 +38,18 @@ namespace LeonNote.Controllers
             return View();
         }
 
-        public ActionResult Remove(int id)
+        public ActionResult Remove()
         {
-            return View("Index");
+            int id =Convert.ToInt32(Request.QueryString["id"]);
+            int userid = Convert.ToInt32(Request.QueryString["userid"]);
+            if (userid != (Session["User"] as User).Id)
+            {
+                //弹窗同时后退一步
+                return Content("<script>alert('非法的用户请求');history.go(-1);</script>");
+            }
+            noteDB.NoteBase.Remove(noteDB.NoteBase.FirstOrDefault(n => n.Id == id && n.UserID == userid));
+            noteDB.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
 
     }
