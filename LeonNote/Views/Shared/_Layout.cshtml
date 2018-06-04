@@ -20,13 +20,13 @@
                 <div class="collapse navbar-collapse" id="MainNavbar">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                                @Html.ActionLink("发布", "Publish", "Home", new { area = "" }, new { id = "NavbarPublish", @class = "nav-link" })
+                            @Html.ActionLink("发表", "Publish", "Home", new { area = "" }, new { id = "NavbarPublish", @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                                @Html.ActionLink("笔记", "Notes", "Home", new { area = "" }, new { id = "NavbarNote", @class = "nav-link" })
+                            @Html.ActionLink("笔记", "Notes", "Home", new { area = "" }, new { id = "NavbarNote", @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                                @Html.ActionLink("用户", "User", "Home", new { area = "" }, new { id = "NavbarUser", @class = "nav-link" })
+                            @Html.ActionLink("用户", "UserInfo", "Account", new { area = "" }, new { id = "NavbarUser", @class = "nav-link" })
                         </li>
                         <li class="nav-item">
                             <form class="form-inline my-2 my-md-0" method="post" action="~/Search/Index">
@@ -41,7 +41,7 @@
                             var User = (Session["User"] as User) ?? null;
                             if (User == null)
                             {
-                                @Html.ActionLink("登录", "Login", "Account", new { area = "" }, new { id = "Loginn", @class = "btn btn-primary" })
+                                @Html.ActionLink("登录", "Login", "Account", new { area = "" }, new { id = "Login", @class = "btn btn-primary" })
                             }
                             else
                             {
