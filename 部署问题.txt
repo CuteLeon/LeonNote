@@ -1,0 +1,8 @@
+网站部署到IIS：
+    首先在控制面板>程序>启用或关闭Windows功能>启用"Internet Information Services">万维网服务>应用程序开发功能>启用"ASP.NET"相关
+    Visual Studio>解决方案管理器>右击项目>发布>文件夹>选择发布文件夹路径>发布
+    IIS>连接>网站>添加网站>输入网站名称>应用程序池选择输入与项目相同的名称>物理路径选择刚刚发布的网站目录>IP地址使用默认"默认未分配"即可随时以localhost访问>确定
+    IIS>连接>应用程序池>选中刚刚与项目同名的程序池>操作>设置应用程序池默认设置>进程模型>标识>LocalSystem>确定
+
+部署数据库：
+    SQL Server Management Studio(SSMS)>安全性>登录名>NT AUTHORITY\SYSTEM>属性>用户映射>勾选项目连接的数据库>数据库角色成员身份(R):>勾选public>勾选db_ownser>确定
