@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeonNote", "LeonNote\LeonNote.csproj", "{75A55F32-F7F4-4406-B8FA-C31C8AE03B21}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeonNoteCore", "LeonNoteCore\LeonNoteCore.csproj", "{0E6E9499-AD54-4B0B-A3DC-B897E78C01B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{75A55F32-F7F4-4406-B8FA-C31C8AE03B21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75A55F32-F7F4-4406-B8FA-C31C8AE03B21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75A55F32-F7F4-4406-B8FA-C31C8AE03B21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E6E9499-AD54-4B0B-A3DC-B897E78C01B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E6E9499-AD54-4B0B-A3DC-B897E78C01B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E6E9499-AD54-4B0B-A3DC-B897E78C01B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E6E9499-AD54-4B0B-A3DC-B897E78C01B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
