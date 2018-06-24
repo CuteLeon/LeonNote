@@ -1,0 +1,31 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "用户注册";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false);
+    <div class="container">
+        <div class="form-group">
+            @Html.LabelFor(m => m.UserName)
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "请输入用户名" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "请输入密码" })
+        </div>
+        <div class="btn-group float-right">
+            <button type="submit" class="btn btn-primary" id="RegisterButton">注册</button>
+            <button type="button" class="btn btn-secondary" onclick="GotoLogin();" id="LoginButton">登录</button>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+}
+
+<script type="text/javascript">
+    function GotoLogin() {
+        location.href = "@Url.Content("~/Account/Login")";
+    }
+</script>

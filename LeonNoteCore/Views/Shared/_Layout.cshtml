@@ -41,12 +41,12 @@
                     </li>
                 </ul>
 
-                @Html.ActionLink("登录", "Login", "Account", new { area = "" }, new { id = "Login", @class = "nav-button btn btn-primary" })
                 <div class="nav-item btn-lg dropdown navbar-brand">
                     @{
                         var User = (Context.Session.Get<User>("User")) ?? null;
                         if (User == null)
                         {
+                            @Html.ActionLink("登录", "Login", "Account", new { area = "" }, new { id = "Login", @class = "nav-button btn btn-primary" })
                         }
                         else
                         {

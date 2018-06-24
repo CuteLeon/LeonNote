@@ -12,7 +12,7 @@ namespace LeonNoteCore.Controllers
 {
     public class HomeController : Controller
     {
-        NoteDB UnityNoteDB = new NoteDB();
+        NoteDB noteDB = new NoteDB();
 
         public IActionResult Index()
         {
@@ -23,7 +23,7 @@ namespace LeonNoteCore.Controllers
              */
             if (user == null) return View(new List<Note>());
 
-            var notes = UnityNoteDB.NoteBase
+            var notes = noteDB.NoteBase
                 .Where(note => note.UserID == user.Id)
                 .ToList();
 
