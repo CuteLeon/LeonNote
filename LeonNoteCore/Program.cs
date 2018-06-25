@@ -19,6 +19,14 @@ namespace LeonNoteCore
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseUrls(new string[] {
+                    /* 部署地址和端口:
+                     * 0.0.0.0 : 公网公开访问
+                     * localhost : 仅本地访问
+                     * 1304 : 端口
+                     */ 
+                    "http://0.0.0.0:1304",
+                })
                 .UseStartup<Startup>();
     }
 }
