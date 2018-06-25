@@ -33,12 +33,14 @@
                     <li class="nav-item">
                         @Html.ActionLink("发表", "Publish", "Note", new { area = "" }, new { id = "NavbarPublish", @class = "nav-link" })
                     </li>
+                    <!--    
                     <li class="nav-item">
                         @Html.ActionLink("关于", "About", "Home", new { area = "" }, new { id = "NavbarNote", @class = "nav-link" })
                     </li>
                     <li class="nav-item">
                         @Html.ActionLink("联系", "Contact", "Home", new { area = "" }, new { id = "NavbarUser", @class = "nav-link" })
                     </li>
+                    -->
                 </ul>
 
                 <div class="nav-item btn-lg dropdown navbar-brand">
@@ -54,7 +56,7 @@
                                 @User.UserName
                             </a>
                             <div class="dropdown-menu" aria-labelledby="UserDropdown">
-                                @Html.ActionLink("资料", "Contact", "Home", new { area = "" }, new { id = "UserInfo", @class = "dropdown-item" })
+                                <!--@Html.ActionLink("资料", "Contact", "Home", new { area = "" }, new { id = "UserInfo", @class = "dropdown-item" })-->
                                 @Html.ActionLink("注销", "Logoff", "Account", new { area = "" }, new { id = "Logoff", @class = "dropdown-item" })
                             </div>
                         }
