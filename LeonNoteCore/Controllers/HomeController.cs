@@ -16,11 +16,10 @@ namespace LeonNoteCore.Controllers
 
         public IActionResult Index()
         {
-            User user = HttpContext.Session.Get<User>("User");
             /*
-            User user = UnityNoteDB.UserBase.FirstOrDefault(u => u.UserName == "Leon");
-            HttpContext.Session.Set("User", user);
+            HttpContext.Session.Set("User", noteDB.UserBase.FirstOrDefault(u => u.UserName == "Leon"));
              */
+            User user = HttpContext.Session.Get<User>("User");
             if (user == null) return View(new List<Note>());
 
             var notes = noteDB.NoteBase

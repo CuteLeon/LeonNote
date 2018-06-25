@@ -40,6 +40,12 @@ namespace LeonNoteCore.Controllers
         [HttpPost]
         public ActionResult Register(User user)
         {
+            if (string.IsNullOrEmpty(user.UserName) || string.IsNullOrEmpty(user.Password))
+            {
+                ModelState.AddModelError("","用户名和密码不允许为空");
+                return View(user);
+            }
+
             var item = noteDB.UserBase.FirstOrDefault<User>(m => m.UserName == user.UserName);
             if (item != null)
             {

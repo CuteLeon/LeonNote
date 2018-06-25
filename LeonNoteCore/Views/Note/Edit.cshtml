@@ -1,6 +1,7 @@
-﻿@model Note
+﻿@model LeonNoteCore.Models.Note
+
 @{
-    ViewBag.Title = "编辑笔记";
+    ViewData["Title"] = "编辑笔记";
 }
 
 @using (Html.BeginForm())
@@ -8,6 +9,7 @@
     @Html.ValidationSummary(false);
     <h5>正在编辑 : @Model.Title</h5>
     <hr />
+
     <div class="form-group">
         @Html.LabelFor(n => n.Title)
         @Html.TextBoxFor(n => n.Title, new { @class = "form-control" })
@@ -17,6 +19,7 @@
         @Html.TextBoxFor(n => n.Content, new { @class = "form-control" })
     </div>
     <p class="text-right">
-        <button type="submit" class="btn btn-primary">保存</button>
+        <button type="submit" class="btn btn-primary">保存</button>|
+        <a asp-controller="Home" asp-action="Index" class="btn btn-default">返回列表</a>
     </p>
 }
