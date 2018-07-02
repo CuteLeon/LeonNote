@@ -7,52 +7,55 @@
     User user = Context.Session.Get<User>("User") as User;
     if (user != null)
     {
-        <div class="container">
-            <h5>@user.UserName  的笔记：</h5>
-            @{
-                if (Model == null || Model.Count == 0)
-                {
-                    <h5 class="text-center">没有发表过笔记 ...</h5>
-                }
-                else
-                {
-                    <table class="table table-bordered table-hover table-light table-striped">
+<div class="container">
+    <h5>@user.UserName  的笔记：</h5>
+    @{
+        if (Model == null || Model.Count == 0)
+        {
+            <center>
+                <h5 class="text-center">没有发表过笔记 ...</h5>
+                @Html.ActionLink("发表一条笔记试试吧~", "Publish", "Note", new { area = "" }, new { id = "Publish", @class = "btn btn-primary" })
+            </center>
+        }
+        else
+        {
+            <table class="table table-bordered table-hover table-light table-striped">
+                <tr>
+                    <td colspan="6">
+                        @Html.ActionLink("发表", "Publish", "Note", new { area = "" }, new { id = "Publish", @class = "btn btn-primary" })
+                    </td>
+                </tr>
+                <thead>
+                    <tr>
+                        <th>笔记编号</th>
+                        <th>标题</th>
+                        <th>内容</th>
+                        <th>发布时间</th>
+                        <th>发布者</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var note in Model)
+                    {
                         <tr>
-                            <td colspan="6">
-                                @Html.ActionLink("发表", "Publish", "Note", new { area = "" }, new { id = "Publish", @class = "btn btn-primary" })
+                            <td>@Html.DisplayFor(n => note.Id)</td>
+                            <td>@note.Title</td>
+                            <td>@note.Content</td>
+                            <td>@note.PublishTime</td>
+                            <td>@note.User.UserName</td>
+                            <td style="padding:0.5rem">
+                                <a href="@Url.Content(string.Format(@"~/Note/Detail/?id={0}", note.Id))" class="btn btn-primary btn-sm" style="margin-top:0px;margin-bottom:0px">查看</a>
+                                <a href="@Url.Content(string.Format(@"~/Note/Edit/?id={0}", note.Id))" class="btn btn-info btn-sm" style="margin-top:0px;margin-bottom:0px">编辑</a>
+                                <a href="@Url.Content(string.Format(@"~/Note/Remove/?id={0}", note.Id))" class="btn btn-danger btn-sm" style="margin-top:0px;margin-bottom:0px">删除</a>
                             </td>
                         </tr>
-                        <thead>
-                            <tr>
-                                <th>笔记编号</th>
-                                <th>标题</th>
-                                <th>内容</th>
-                                <th>发布时间</th>
-                                <th>发布者</th>
-                                <th>操作</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var note in Model)
-                            {
-                                <tr>
-                                    <td>@Html.DisplayFor(n => note.Id)</td>
-                                    <td>@note.Title</td>
-                                    <td>@note.Content</td>
-                                    <td>@note.PublishTime</td>
-                                    <td>@note.User.UserName</td>
-                                    <td style="padding:0.5rem">
-                                        <a href="@Url.Content(string.Format(@"~/Note/Detail/?id={0}", note.Id))" class="btn btn-primary btn-sm" style="margin-top:0px;margin-bottom:0px">查看</a>
-                                        <a href="@Url.Content(string.Format(@"~/Note/Edit/?id={0}", note.Id))" class="btn btn-info btn-sm" style="margin-top:0px;margin-bottom:0px">编辑</a>
-                                        <a href="@Url.Content(string.Format(@"~/Note/Remove/?id={0}", note.Id))" class="btn btn-danger btn-sm" style="margin-top:0px;margin-bottom:0px">删除</a>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                }
-            }
-        </div>
+                    }
+                </tbody>
+            </table>
+        }
+    }
+</div>
     }
     else
     {
