@@ -22,6 +22,9 @@ namespace LeonNoteCore.Models
         [DisplayName("发布时间"), Required, DataType(DataType.DateTime)]
         public DateTime? PublishTime { get; set; }
 
+        [DisplayName("是否被删除"), Required]
+        public bool Deleted { get; set; }
+
         [DisplayName("发布者ID")]
         public int UserID { get; set; }
 

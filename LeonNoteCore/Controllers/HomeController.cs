@@ -23,7 +23,7 @@ namespace LeonNoteCore.Controllers
             if (user == null) return View(new List<Note>());
 
             var notes = noteDB.NoteBase
-                .Where(note => note.UserID == user.Id)
+                .Where(note => note.UserID == user.Id && !note.Deleted)
                 .ToList();
 
             return View(notes);

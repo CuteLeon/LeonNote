@@ -22,7 +22,8 @@ namespace LeonNoteCore.Controllers
                 //弹窗同时后退一步
                 return Content("<script>alert('无效的用户请求');history.go(-1);</script>");
             }
-            noteDB.NoteBase.Remove(noteDB.NoteBase.FirstOrDefault(n => n.Id == id && n.UserID == user.Id));
+            //noteDB.NoteBase.Remove(noteDB.NoteBase.FirstOrDefault(n => n.Id == id && n.UserID == user.Id));
+            noteDB.NoteBase.FirstOrDefault(n => n.Id == id && n.UserID == user.Id).Deleted = true;
             noteDB.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
@@ -60,7 +61,7 @@ namespace LeonNoteCore.Controllers
                 //弹窗同时后退一步
                 return Content("<script>alert('无效的用户请求');history.go(-1);</script>");
             }
-            var note = noteDB.NoteBase.FirstOrDefault(n => n.Id == id && n.UserID == user.Id);
+            var note = noteDB.NoteBase.FirstOrDefault(n => n.Id == id && n.UserID == user.Id && !n.Deleted);
             return View(note);
         }
 
@@ -76,7 +77,7 @@ namespace LeonNoteCore.Controllers
                 //弹窗同时后退一步
                 return Content("<script>alert('无效的用户请求');history.go(-1);</script>");
             }
-            var ExistedNote = noteDB.NoteBase.FirstOrDefault(n => n.Id == id && n.UserID == user.Id);
+            var ExistedNote = noteDB.NoteBase.FirstOrDefault(n => n.Id == id && n.UserID == user.Id && !n.Deleted);
             ExistedNote.Title = note.Title;
             ExistedNote.Content = note.Content;
             noteDB.SaveChanges();
@@ -94,7 +95,7 @@ namespace LeonNoteCore.Controllers
                 //弹窗同时后退一步
                 return Content("<script>alert('无效的用户请求');history.go(-1);</script>");
             }
-            var ExistedNote = noteDB.NoteBase.FirstOrDefault(n => n.Id == id && n.UserID == user.Id);
+            var ExistedNote = noteDB.NoteBase.FirstOrDefault(n => n.Id == id && n.UserID == user.Id && !n.Deleted);
             return View(ExistedNote);
         }
     }
