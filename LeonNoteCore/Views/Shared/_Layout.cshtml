@@ -55,7 +55,7 @@
                             <a class="dropdown-toggle" id="UserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 @User.UserName
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="UserDropdown">
+                            <div class="dropdown dropdown-menu" aria-labelledby="UserDropdown">
                                 <!--@Html.ActionLink("资料", "Contact", "Home", new { area = "" }, new { id = "UserInfo", @class = "dropdown-item" })-->
                                 @Html.ActionLink("注销", "Logoff", "Account", new { area = "" }, new { id = "Logoff", @class = "dropdown-item" })
                             </div>
@@ -63,6 +63,7 @@
                     }
                 </div>
             </div>
+        </div>
     </nav>
 
     <!--    

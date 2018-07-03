@@ -261,3 +261,4 @@ __pycache__/
 *.pyc
 /LeonNoteCore/NoteDB.db
 /LeonNoteCore/NoteDB.db
+/LeonNoteCore/Properties/PublishProfiles
