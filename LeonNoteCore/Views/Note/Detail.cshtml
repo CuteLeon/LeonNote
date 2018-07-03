@@ -35,7 +35,7 @@
         </dd>
     </dl>
 </div>
-<div>
+<div class="btn-group">
     <a href="@Url.Content(string.Format(@"~/Note/Edit/?id={0}", @Model.Id))" class="btn btn-primary">编辑</a>
-    <a asp-controller="Home" asp-action="Index" class="btn btn-default">返回列表</a>
+    @Html.ActionLink("返回列表", "Index", "Home", new { area = "" }, new { @class = "btn btn-success" })
 </div>

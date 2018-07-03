@@ -18,8 +18,9 @@
         @Html.LabelFor(n => n.Content)
         @Html.TextBoxFor(n => n.Content, new { @class = "form-control" })
     </div>
-    <p class="text-right">
-        <button type="submit" class="btn btn-primary">保存</button>|
-        <a asp-controller="Home" asp-action="Index" class="btn btn-default">返回列表</a>
-    </p>
+    
+    <div class="btn-group">
+        <button type="submit" class="btn btn-primary">保存</button>
+        @Html.ActionLink("返回列表", "Index", "Home", new { area = "" }, new { @class = "btn btn-success" })
+    </div>
 }
