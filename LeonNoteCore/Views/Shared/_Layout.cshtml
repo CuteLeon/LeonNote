@@ -48,7 +48,7 @@
                         var User = (Context.Session.Get<User>("User")) ?? null;
                         if (User == null)
                         {
-                            @Html.ActionLink("登录", "Login", "Account", new { area = "" }, new { id = "Login", @class = "btn btn-primary nav-button" })
+                            @Html.ActionLink("登录", "Login", "Account", new { area = "" }, new { id = "Login", @class = "btn btn-primary" })
                         }
                         else
                         {
