@@ -21,6 +21,7 @@ namespace LeonNoteCore.Controllers
              */
             User user = HttpContext.Session.Get<User>("User");
             if (user == null) return View(new List<Note>());
+            //return View(null);
 
             var notes = noteDB.NoteBase
                 .Where(note => note.UserID == user.Id && !note.Deleted)
