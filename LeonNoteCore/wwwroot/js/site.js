@@ -1,4 +1,4 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
+﻿function SetDeleteDialog(id, title) {
+    document.getElementById("ModalBody").innerText = "确认要删除笔记 " + title + " 吗？";
+    document.getElementById("DeleteNoteButton").innerHTML = "<a href=\"/Note/Remove/?id=" + id + "\" class=\"btn btn-danger text-white\">删除<\/a>";
+}
