@@ -43,6 +43,12 @@ namespace LeonNoteCore.Controllers
             if (user == null)
                 return RedirectToAction("Login", "Account");
 
+            if (string.IsNullOrEmpty(note.Title) || string.IsNullOrEmpty(note.Content)) 
+            {
+                ModelState.AddModelError("","发表的笔记标题和内容不允许为空");
+                return View(note);
+            }
+
             note.PublishTime = DateTime.Now;
             note.UserID = user.Id;
             noteDB.NoteBase.Add(note);

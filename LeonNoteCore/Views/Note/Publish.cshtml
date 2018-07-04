@@ -3,21 +3,26 @@
     ViewData["Title"] = "发布笔记";
 }
 
-
 @using (Html.BeginForm())
 {
+    <div class="alert alert-warning alert-dismissable" role="alert" id="PublishNoteAlert" style="display:none">
+        <button type="button" class="close" onclick="document.getElementById('PublishNoteAlert').style.display = 'none';">&times;</button>
+        <strong>警告</strong>发布的笔记和内容不允许为空！
+    </div>
+
     @Html.ValidationSummary(false);
 
     <div class="form-group">
         @Html.LabelFor(n => n.Title)
-        @Html.TextBoxFor(n => n.Title, new { @class = "form-control", placeholder = "请输入标题..." })
+        @Html.TextBoxFor(n => n.Title, new { @class = "form-control", placeholder = "请输入标题...", id = "PublishTitleTextBox" })
     </div>
     <div class="form-group">
         @Html.LabelFor(n => n.Content)
-        <textarea asp-for="Content" class="form-control" rows="5" placeholder="请输入内容..."></textarea>
+        <textarea asp-for="Content" class="form-control" rows="5" placeholder="请输入内容..." id="PublishContentTextBox"></textarea>
     </div>
     <p>
-        <button type="submit" class="btn btn-block btn-primary">发表</button>
+        <!--return false; 阻断提交-->
+        <button type="submit" class="btn btn-block btn-primary" onclick="return ShowPublishAlert();">发表</button>
     </p>
 }
 
