@@ -4,38 +4,48 @@
     ViewData["Title"] = "查看笔记";
 }
 
-
 <h5>正在查看 : 《@Model.Title》</h5>
 <hr />
-<div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.PublishTime)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.PublishTime)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.User)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.User.UserName)
-        </dd>
-    </dl>
+<div class="card">
+    <div class="card-header d-inline">
+        <div class="card-title float-left">
+            <h4 class=" float-left">@Model.Title</h4>
+        </div>
+        <div class="float-right text-right">
+            @{
+                var User = (Context.Session.Get<User>("User")) ?? null;
+                if (User != null) { <h5>@User.UserName</h5> }
+            }
+            <small class="text-muted">@Model.PublishTime?.ToString("yyyy/MM/dd hh:mm:ss")</small>
+        </div>
+    </div>
+    <div class="card-body">
+        <p class="card-text">@Model.Content</p>
+    </div>
+    <div class="card-footer d-inline">
+        @Html.ActionLink("返回笔记列表", "Index", "Home", new { area = "" }, new { @class = "btn-sm btn-success float-left" })
+        <div class="float-right">
+            <a href="@Url.Content(string.Format(@"~/Note/Edit/?id={0}", Model.Id))" class="card-link text-primary">编辑</a>
+            <a class="card-link text-danger" data-toggle="modal" data-target="#DeleteModalPanel" onclick="SetDeleteDialog(@Model.Id, '@Model.Title')">删除</a>
+        </div>
+    </div>
 </div>
-<div class="btn-group">
-    <a href="@Url.Content(string.Format(@"~/Note/Edit/?id={0}", @Model.Id))" class="btn btn-primary">编辑</a>
-    @Html.ActionLink("返回列表", "Index", "Home", new { area = "" }, new { @class = "btn btn-success" })
+
+<!-- 模态框 -->
+<div class="modal fade" id="DeleteModalPanel" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="ModalTitle">确定要删除吗？</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" id="ModalBody">
+                确定要删除笔记吗？
+            </div>
+            <div class="modal-footer float-right">
+                <a class="btn btn-success text-white" data-dismiss="modal">取消</a>
+                <div id="DeleteNoteButton"></div>
+            </div>
+        </div>
+    </div>
 </div>

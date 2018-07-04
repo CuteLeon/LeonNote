@@ -31,16 +31,19 @@
             <div class="collapse navbar-collapse" id="MainNavbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
+                        @Html.ActionLink("主页", "Index", "Home", new { area = "" }, new { id = "NavbarHome", @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
                         @Html.ActionLink("发表", "Publish", "Note", new { area = "" }, new { id = "NavbarPublish", @class = "nav-link" })
                     </li>
-                    <!--    
-                    <li class="nav-item">
-                        @Html.ActionLink("关于", "About", "Home", new { area = "" }, new { id = "NavbarNote", @class = "nav-link" })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("联系", "Contact", "Home", new { area = "" }, new { id = "NavbarUser", @class = "nav-link" })
-                    </li>
-                    -->
+                    <!--
+    <li class="nav-item">
+        @Html.ActionLink("关于", "About", "Home", new { area = "" }, new { id = "NavbarNote", @class = "nav-link" })
+    </li>
+    <li class="nav-item">
+        @Html.ActionLink("联系", "Contact", "Home", new { area = "" }, new { id = "NavbarUser", @class = "nav-link" })
+    </li>
+    -->
                 </ul>
 
                 <div class="nav-item btn-lg dropdown navbar-brand">
