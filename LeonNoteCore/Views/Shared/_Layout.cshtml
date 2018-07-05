@@ -75,14 +75,14 @@
     -->
 
     <div class="container body-content">
-        <h2>@ViewData["Title"]</h2>
-        <hr />
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2018 - LeonNoteCore</p>
-        </footer>
     </div>
+
+    <footer class="border-top text-muted">
+        <div class="container">
+            <p>&copy; 2018 - LeonNoteCore</p>
+        </div>
+    </footer>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>

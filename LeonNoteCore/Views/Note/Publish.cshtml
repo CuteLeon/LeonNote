@@ -11,7 +11,8 @@
     </div>
 
     @Html.ValidationSummary(false);
-
+    <h4 class="text-primary">发表你的想法吧 ~</h4>
+    <br />
     <div class="form-group">
         @Html.LabelFor(n => n.Title)
         @Html.TextBoxFor(n => n.Title, new { @class = "form-control", placeholder = "请输入标题...", id = "PublishTitleTextBox" })
