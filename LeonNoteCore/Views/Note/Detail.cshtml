@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="card-body">
-        <p class="card-text">@Model.Content</p>
+        <pre class="card-text lead">@Model.Content</pre>
     </div>
     <div class="card-footer d-inline">
         @Html.ActionLink("返回笔记列表", "Index", "Home", new { area = "" }, new { @class = "btn-sm btn-success float-left" })
