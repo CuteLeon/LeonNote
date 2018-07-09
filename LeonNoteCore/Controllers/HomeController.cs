@@ -25,6 +25,7 @@ namespace LeonNoteCore.Controllers
 
             var notes = noteDB.NoteBase
                 .Where(note => note.UserID == user.Id && !note.Deleted)
+                .OrderByDescending(note=>note.Id)
                 .ToList();
 
             return View(notes);
