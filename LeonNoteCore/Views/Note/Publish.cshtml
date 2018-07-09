@@ -15,11 +15,11 @@
     <br />
     <div class="form-group">
         @Html.LabelFor(n => n.Title)
-        @Html.TextBoxFor(n => n.Title, new { @class = "form-control", placeholder = "请输入标题...", id = "PublishTitleTextBox" })
+        @Html.TextBoxFor(n => n.Title, new { @class = "form-control", placeholder = "请输入标题...", id = "PublishTitleTextBox", required = "required" })
     </div>
     <div class="form-group">
         @Html.LabelFor(n => n.Content)
-        <textarea asp-for="Content" class="form-control" rows="5" placeholder="请输入内容..." id="PublishContentTextBox"></textarea>
+        <textarea asp-for="Content" class="form-control" rows="5" placeholder="请输入内容..." id="PublishContentTextBox" required></textarea>
     </div>
     <p>
         <!--return false; 阻断提交-->
