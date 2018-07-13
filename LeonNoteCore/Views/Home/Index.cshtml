@@ -36,7 +36,7 @@
                                 <div class="card-title">
                                     <h5>@note.Title<small class="text-muted float-right">@note.PublishTime?.ToString("yyyy/MM/dd hh:mm:ss")</small></h5>
                                 </div>
-                                <p class="card-text">@note.Content</p>
+                                <p class="card-text" style="overflow:hidden;text-overflow:ellipsis;max-height:100px;">@note.Content</p>
                                 <div class="float-right">
                                     <a href="@Url.Content(string.Format(@"~/Note/Detail/?id={0}", note.Id))" class="card-link text-primary">查看</a>
                                     <a href="@Url.Content(string.Format(@"~/Note/Edit/?id={0}", note.Id))" class="card-link text-info">编辑</a>
